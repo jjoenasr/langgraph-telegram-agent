@@ -66,7 +66,7 @@ async def chat(request: ChatRequest):
     if workflow == "image" and image_path:
         with open(image_path, "rb") as img_file:
             return {"image": base64.b64encode(img_file.read()).decode('utf-8')}
-    elif workflow == "conversation":
+    else:
         return {"response": msg}
 
     return {"error": "Unknown workflow"}

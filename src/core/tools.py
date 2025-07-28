@@ -4,6 +4,7 @@ from src.logger_config import logger
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from together import Together
 from uuid import uuid4
+from typing import Optional
 import base64
 from src.config import settings
 
@@ -21,7 +22,7 @@ def web_search(query: str) -> str:
         return f"Error searching the web: {str(e)[:100]}..."
     
 
-def generate_image(prompt: str, model: str = "black-forest-labs/FLUX.1-schnell-Free") -> str:
+def generate_image(prompt: str, model: str = "black-forest-labs/FLUX.1-schnell-Free") -> Optional[str]:
     """Generate an image based on a prompt using Together AI."""
     try:
         together_client = Together(api_key=settings.together_api_key)
@@ -44,8 +45,8 @@ def generate_image(prompt: str, model: str = "black-forest-labs/FLUX.1-schnell-F
         return img_path
     
     except Exception as e:
-        logger.error(f"Image generation error: {e}")
-        return f"Error generating image: {str(e)[:100]}..."
+        logger.error(f"Image generation error: {str(e)[:100]}...")
+        return None
 
 async def get_mcp_tools() -> list:
     """Get tools from the MCP server"""

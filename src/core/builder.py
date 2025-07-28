@@ -33,6 +33,8 @@ def create_nodes_and_edges(llm: ChatGoogleGenerativeAI, tools: list):
         path = generate_image(prompt)
         if path:
             return {"image_path": path, "messages": [AIMessage(content=f"Here is the image you requested: {path}")]}
+        else:
+            return {"messages": [AIMessage(content="Failed to generate image. Please try again later.")]}
     
     def select_workflow(state):
         return "image" if state["workflow"] == "image" else "agent"
