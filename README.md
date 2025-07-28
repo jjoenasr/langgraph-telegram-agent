@@ -8,12 +8,11 @@ A FastAPI-based AI agent that integrates with Telegram and uses LangGraph and Ge
 - 🚀 FastAPI endpoints for webhook and direct chat
 - 🧠 LangGraph-powered agent with Google Gemini LLM
 - 🧩 Modular tool and workflow support
-- 🌐 CORS enabled for all origins
 
 ## 🛠️ Agent Tools
-- 🔎 **web_search**: Search the web for information using DuckDuckGo (DDGS).
+- 🔎 **web_search**: Search the web for information using DuckDuckGo.
 - 🖼️ **generate_image**: Generate images from text prompts using Together AI.
-- 🤝 **get_mcp_tools**: Dynamically fetch and integrate tools from MCP servers (e.g., Slack integration).
+- 🤝 **mcp_tools**: Dynamically fetch and integrate tools from MCP servers (e.g., Slack integration).
 
 ## 🧠 Agent Overview
 - 🤖 Uses Google Gemini LLM via LangChain
@@ -26,6 +25,13 @@ A FastAPI-based AI agent that integrates with Telegram and uses LangGraph and Ge
 - `POST /chat` — Accepts a JSON payload `{ "prompt": "your message" }` and returns a response or base64-encoded image.
 
 ## ⚡ Quick Start
+
+### Prerequisites
+
+- Python 3.9+
+- Node.js 18+
+
+### Installation
 
 1. 📦 **Install dependencies:**
    ```sh
