@@ -1,0 +1,13 @@
+ddgs
+fastapi
+langchain_core
+langchain_google_genai
+langchain_mcp_adapters
+langgraph
+pydantic
+pydantic_settings
+python-dotenv
+python-multipart
+python-telegram-bot
+together
+uvicorn

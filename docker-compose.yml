@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  api:
+    build: .
+    container_name: ai-agent-api
+    ports:
+      - "8000:8000"
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_BOT_NAME=${TELEGRAM_BOT_NAME}
+      - TOGETHER_API_KEY=${TOGETHER_API_KEY}
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_TEAM_ID=${SLACK_TEAM_ID}
+      - NOTION_API_TOKEN=${NOTION_API_TOKEN}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    volumes:
+      - ./src:/app/src  # For live code sync (optional, remove in prod)
+      - ./data/uploads:/app/data/uploads  # persist uploads
+
