@@ -7,6 +7,7 @@ from src.core.tools import generate_image
 from langgraph.graph import StateGraph, START, END, MessagesState
 from langgraph.graph.state import CompiledStateGraph
 from langgraph.checkpoint.memory import MemorySaver
+from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 from langgraph.prebuilt import ToolNode
 from langchain_google_genai import ChatGoogleGenerativeAI
 
@@ -45,7 +46,7 @@ def create_nodes_and_edges(llm: ChatGoogleGenerativeAI, tools: list):
 
     return router_node, convo_node, image_node, select_workflow, should_continue
 
-async def build_graph(llm: ChatGoogleGenerativeAI, tools: list) -> CompiledStateGraph:
+async def build_graph(llm: ChatGoogleGenerativeAI, tools: list, checkpointer: AsyncSqliteSaver | MemorySaver) -> CompiledStateGraph:
     router_node, convo_node, image_node, select_workflow, should_continue = create_nodes_and_edges(llm, tools)
     tool_node = ToolNode(tools)
 
@@ -61,5 +62,4 @@ async def build_graph(llm: ChatGoogleGenerativeAI, tools: list) -> CompiledState
     builder.add_edge("tools", "agent")
     builder.add_edge("image", END)
 
-    checkpointer = MemorySaver()
     return builder.compile(checkpointer=checkpointer)
