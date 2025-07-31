@@ -1,0 +1,22 @@
+[project]
+name = "langgraph-telegram-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ddgs>=9.4.3",
+    "fastapi>=0.116.1",
+    "langchain-core>=0.3.72",
+    "langchain-google-genai>=2.1.8",
+    "langchain-mcp-adapters>=0.1.9",
+    "langgraph>=0.6.2",
+    "langgraph-checkpoint-sqlite>=2.0.11",
+    "pydantic>=2.11.7",
+    "pydantic-settings>=2.10.1",
+    "python-dotenv>=1.1.1",
+    "python-multipart>=0.0.20",
+    "python-telegram-bot>=22.3",
+    "together>=1.5.21",
+    "uvicorn>=0.35.0",
+]

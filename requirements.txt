@@ -1,5 +1,6 @@
 ddgs
 fastapi
+langgraph-checkpoint-sqlite
 langchain_core
 langchain_google_genai
 langchain_mcp_adapters
